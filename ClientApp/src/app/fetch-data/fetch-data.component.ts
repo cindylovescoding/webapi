@@ -18,6 +18,7 @@ export class FetchDataComponent {
   public authors: Author[];
   public toAddBook: Boolean = false;
   @Input() newBook: Book;
+  public newBookAuthorId: number;
   public idCount: number;
   public selectedAuthorId: number;
   @Input() book: Book;
@@ -60,13 +61,6 @@ export class FetchDataComponent {
     this.toAddBook = true;
   }
 
-  addNewBook() {
-    const urlPrefix = this.baseUrl + 'api/books';
-    // const url = `${urlPrefix}/${id}`;
-    this.http.post(urlPrefix, this.newBook, httpOptions).subscribe(result => {
-      alert("Added book ${book.name} successfully!"); result => this.books.push(this.newBook);
-    }, error => console.error(error));
-  }
   addBook(title: String, year: number, genre: String, price: number, authorId: number) {
    // this.idCount = this.idCount + 1;
     var book = {

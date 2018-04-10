@@ -37,19 +37,19 @@
     <h2> Add a book </h2>
     <div class="form-group">
       <label for="inputAuthor" class="col-sm-2 control-label">Title:</label>
-      <input [(ngModel)]="newBook.title" placeholder="title">
+      <input #bookTitle placeholder="title">
     </div>
     <div class="form-group">
       <label for="inputAuthor" class="col-sm-2 control-label">Year:</label>
-      <input [(ngModel)]="newBook.year" placeholder="year">
+      <input #bookYear placeholder="year">
     </div>
     <div class="form-group">
       <label for="inputAuthor" class="col-sm-2 control-label">Genre:</label>
-      <input [(ngModel)]="newBook.genre" placeholder="genre">
+      <input #bookGenre placeholder="genre">
     </div>
     <div class="form-group">
       <label for="inputAuthor" class="col-sm-2 control-label">Price:</label>
-      <input [(ngModel)]="newBook.price" placeholder="price">
+      <input #bookPrice placeholder="price">
     </div>
     <!--<div class="form-group">
     <label for="inputAuthor" class="col-sm-2 control-label">author:</label>
@@ -59,12 +59,12 @@
       <label for="selectAuthor" class="col-sm-2 control-label">Author:</label>
       <!--<select data-bind="options:authors, optionsText: 'Name', value: book.authorName"></select>-->
       <!--<select [(ngModel)]="book.authorName">-->
-      <select [(ngModel)]="newBook.authorId">
+      <select [(ngModel)]="newBookAuthorId">
         <option *ngFor="let item of authors" [ngValue]="item.id">{{item.name}}</option>
       </select>
     </div>
-    <button (click)="addNewBook()">add</button>
-    <h2> Add a Book </h2>
+    <button (click)="addBook(bookTitle.value, bookYear.value, bookGenre.value, bookPrice.value, newBookAuthorId);">add</button>
+    <!--<h2> Add a Book </h2>
     <label>
       Title:
       <input #bookTitle />
@@ -87,7 +87,7 @@
     </label>
     <button (click)="addBook(bookTitle.value, bookYear.value, bookGenre.vaule, bookPrice.value, authorId.value); bookName.value=''; bookYear.value=''; bookGenre.value=''; bookPrice.value=''; authorId.value=''">
       Submit
-    </button>
+    </button>-->
   </div>
   <div *ngIf="selectedBook">
     <h2> {{selectedBook.title}} Book Details </h2>
