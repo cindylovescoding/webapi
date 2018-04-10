@@ -1,0 +1,33 @@
+<div>
+  <h2> Add a book </h2>
+  <div class="form-group">
+    <label for="inputAuthor" class="col-sm-2 control-label">Title:</label>
+    <input #bookTitle placeholder="title">
+  </div>
+  <div class="form-group">
+    <label for="inputAuthor" class="col-sm-2 control-label">Year:</label>
+    <input #bookYear placeholder="year">
+  </div>
+  <div class="form-group">
+    <label for="inputAuthor" class="col-sm-2 control-label">Genre:</label>
+    <input #bookGenre placeholder="genre">
+  </div>
+  <div class="form-group">
+    <label for="inputAuthor" class="col-sm-2 control-label">Price:</label>
+    <input #bookPrice placeholder="price">
+  </div>
+  <!--<div class="form-group">
+    <label for="inputAuthor" class="col-sm-2 control-label">author:</label>
+    <input [(ngModel)]="book.authorName" placeholder="author">
+  </div>-->
+  <div class="form-group">
+    <label for="selectAuthor" class="col-sm-2 control-label">Author:</label>
+    <!--<select data-bind="options:authors, optionsText: 'Name', value: book.authorName"></select>-->
+    <!--<select [(ngModel)]="book.authorName">-->
+    <select [(ngModel)]="newBookAuthorId">
+      <option *ngFor="let item of authors" [ngValue]="item.id">{{item.name}}</option>
+    </select>
+  </div>
+  <button (click)="addBook(bookTitle.value, bookYear.value, bookGenre.value, bookPrice.value, newBookAuthorId);bookTitle.value=''; bookYear.value=''; bookGenre.value=''; bookPrice.value='';">add</button>
+  <button (click)="goBack()">go back</button>
+</div>

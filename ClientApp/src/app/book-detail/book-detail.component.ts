@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Book, Author } from '../fetch-data/fetch-data.component';
 import { Observable } from 'rxjs/Observable';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,17 +18,31 @@ export class BookDetailComponent implements OnInit {
   @Input() book: Book;
   public authors: Author[];
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
+  constructor(private route:ActivatedRoute, private location: Location, private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
     http.get<Author[]>(baseUrl + 'api/authors').subscribe(result => {
       this.authors = result;
     }, error => console.error(error));
   }
 
   ngOnInit() {
+    this.getBook();
+  }
+
+  getBook(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    const urlPrefix = this.baseUrl + 'api/books';
+    const url = `${urlPrefix}/${id}`;
+    this.http.get<Book>(url).subscribe(result => {
+      this.book = result;
+    }, error => console.error(error));
   }
 
   save(): void {
     this.updateBook(this.book);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 

@@ -35,19 +35,6 @@ export class FetchDataComponent {
     }, error => console.error(error));
   }
 
-  getBooks1() {
-    const urlPrefix = this.baseUrl + 'api/books';
-    this.http.get<Book[]>(this.baseUrl + 'api/books').subscribe(result => {
-      this.books = result; this.idCount = this.books.length;
-    }, error => console.error(error));
-  }
-
-  public getBooks() {
-    this.http.get<Book[]>(this.baseUrl + 'api/books').subscribe(result => {
-      this.books = result; 
-    }, error => console.error(error));
-  }
-
   onSelect(book: Book): void {
     this.selectedBook = book;
     this.book = book;

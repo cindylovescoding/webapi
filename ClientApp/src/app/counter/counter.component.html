@@ -1,7 +1,23 @@
-<h1>Counter</h1>
-
-<p>This is a simple example of an Angular component.</p>
-
-<p>Current count: <strong>{{ currentCount }}</strong></p>
-
-<button (click)="incrementCounter()">Increment</button>
+<div class='navbar-collapse collapse'>
+  <div class="row">
+    <div class="panel panel-default">
+      <h2 class="panel-heading">Authors List</h2>
+    </div>
+    <table class='table' *ngIf="authors">
+      <thead>
+        <tr>
+          <th>AuthorID</th>
+          <th>Name</th>
+          <!--<th>Books</th>-->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let author of authors">
+          <td>{{ author.id }}</td>
+          <td>{{ author.name }}</td>
+          <!--<td>{{ author.books}}</td>-->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
