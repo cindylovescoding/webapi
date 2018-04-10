@@ -28,7 +28,7 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'api/books', component: BookDetailComponent },
+      { path: 'api/books/:id', component: BookDetailComponent },
     ])
   ],
   providers: [],

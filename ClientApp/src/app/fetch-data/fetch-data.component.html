@@ -63,31 +63,7 @@
         <option *ngFor="let item of authors" [ngValue]="item.id">{{item.name}}</option>
       </select>
     </div>
-    <button (click)="addBook(bookTitle.value, bookYear.value, bookGenre.value, bookPrice.value, newBookAuthorId);">add</button>
-    <!--<h2> Add a Book </h2>
-    <label>
-      Title:
-      <input #bookTitle />
-    </label>
-    <label>
-      Year:
-      <input #bookYear />
-    </label>
-    <label>
-      Genre:
-      <input #bookGenre />
-    </label>
-    <label>
-      Price:
-      <input #bookPrice />
-    </label>
-    <label>
-      AuthorId:
-      <input #authorId />
-    </label>
-    <button (click)="addBook(bookTitle.value, bookYear.value, bookGenre.vaule, bookPrice.value, authorId.value); bookName.value=''; bookYear.value=''; bookGenre.value=''; bookPrice.value=''; authorId.value=''">
-      Submit
-    </button>-->
+    <button (click)="addBook(bookTitle.value, bookYear.value, bookGenre.value, bookPrice.value, newBookAuthorId);bookTitle.value=''; bookYear.value=''; bookGenre.value=''; bookPrice.value='';">add</button>
   </div>
   <div *ngIf="selectedBook">
     <h2> {{selectedBook.title}} Book Details </h2>
@@ -125,6 +101,8 @@
     </div>
     <button (click)="save()">save</button>
   </div>
+
+  <app-book-detail [book]="selectedBook"></app-book-detail>
     <!--<app-book-detail [book]="selectedBook"></app-book-detail>-->
   </div>
 

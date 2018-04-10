@@ -78,7 +78,7 @@ export class FetchDataComponent {
     const urlPrefix = this.baseUrl + 'api/books';
    // const url = `${urlPrefix}/${id}`;
     this.http.post(urlPrefix, book, httpOptions).subscribe(result => {
-      alert("Added book ${book.name} successfully!"); result => this.books.push(book);
+      alert("Added book successfully!"); result => this.books.push(book);
     }, error => console.error(error));
   }
 
