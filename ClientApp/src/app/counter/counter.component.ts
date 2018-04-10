@@ -11,9 +11,10 @@ import { Location } from '@angular/common';
 })
 export class CounterComponent {
   public authors: Author[];
+  public apiUrl: String = 'http://webapiapp.azurewebsites.net/';
 
   constructor(private route: ActivatedRoute, private location: Location, private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
-    http.get<Author[]>(baseUrl + 'api/authors').subscribe(result => {
+    http.get<Author[]>(this.apiUrl + 'api/authors').subscribe(result => {
       this.authors = result;
     }, error => console.error(error));
   }

@@ -21,16 +21,17 @@ export class FetchDataComponent {
   public newBookAuthorId: number;
   public idCount: number;
   public selectedAuthorId: number;
+  public apiUrl: String = 'http://webapiapp.azurewebsites.net/';
   @Input() book: Book;
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
-    http.get<WeatherForecast[]>(baseUrl + 'api/SampleData/WeatherForecasts').subscribe(result => {
+    http.get<WeatherForecast[]>(this.apiUrl + 'api/SampleData/WeatherForecasts').subscribe(result => {
       this.forecasts = result;
     }, error => console.error(error));
-    http.get<Book[]>(baseUrl + 'api/books').subscribe(result => {
+    http.get<Book[]>(this.apiUrl + 'api/books').subscribe(result => {
       this.books = result; this.idCount = this.books.length;
     }, error => console.error(error));
-    http.get<Author[]>(baseUrl + 'api/authors').subscribe(result => {
+    http.get<Author[]>(this.apiUrl + 'api/authors').subscribe(result => {
       this.authors = result;
     }, error => console.error(error));
   }
@@ -62,7 +63,7 @@ export class FetchDataComponent {
     } as Book;
    // const id = book.id;
     // alert(this.http == null ? "null" : "notnull");
-    const urlPrefix = this.baseUrl + 'api/books';
+    const urlPrefix = this.apiUrl + 'api/books';
    // const url = `${urlPrefix}/${id}`;
     this.http.post(urlPrefix, book, httpOptions).subscribe(result => {
       alert("Added book successfully!"); result => this.books.push(book);
@@ -78,7 +79,7 @@ export class FetchDataComponent {
   updateBook(book: Book) {
     const id = book.id;
    // alert(this.http == null ? "null" : "notnull");
-    const urlPrefix = this.baseUrl + 'api/books';
+    const urlPrefix = this.apiUrl + 'api/books';
     const url = `${urlPrefix}/${id}`;
     //this.http.get(url).subscribe(result => {
     //  alert(result.toString());

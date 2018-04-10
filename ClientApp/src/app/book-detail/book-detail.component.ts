@@ -17,9 +17,10 @@ const httpOptions = {
 export class BookDetailComponent implements OnInit {
   @Input() book: Book;
   public authors: Author[];
+  public apiUrl: String = 'http://webapiapp.azurewebsites.net/';
 
   constructor(private route:ActivatedRoute, private location: Location, private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
-    http.get<Author[]>(baseUrl + 'api/authors').subscribe(result => {
+    http.get<Author[]>(this.apiUrl + 'api/authors').subscribe(result => {
       this.authors = result;
     }, error => console.error(error));
   }
@@ -30,7 +31,7 @@ export class BookDetailComponent implements OnInit {
 
   getBook(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    const urlPrefix = this.baseUrl + 'api/books';
+    const urlPrefix = this.apiUrl + 'api/books';
     const url = `${urlPrefix}/${id}`;
     this.http.get<Book>(url).subscribe(result => {
       this.book = result;
@@ -50,7 +51,7 @@ export class BookDetailComponent implements OnInit {
   updateBook(book: Book) {
     const id = book.id;
     // alert(this.http == null ? "null" : "notnull");
-    const urlPrefix = this.baseUrl + 'api/books';
+    const urlPrefix = this.apiUrl + 'api/books';
     const url = `${urlPrefix}/${id}`;
     //this.http.get(url).subscribe(result => {
     //  alert(result.toString());

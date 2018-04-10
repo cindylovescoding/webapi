@@ -16,10 +16,11 @@ const httpOptions = {
 export class AddBookComponent implements OnInit {
 
   public authors: Author[];
-  public newBookAuthorId : number=1;
+  public newBookAuthorId: number = 1;
+  public apiUrl: String = 'http://webapiapp.azurewebsites.net/';
 
   constructor(private route: ActivatedRoute, private location: Location, private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
-    http.get<Author[]>(baseUrl + 'api/authors').subscribe(result => {
+    http.get<Author[]>(this.apiUrl + 'api/authors').subscribe(result => {
       this.authors = result;
     }, error => console.error(error));
   }
@@ -41,7 +42,7 @@ export class AddBookComponent implements OnInit {
     } as Book;
     // const id = book.id;
     // alert(this.http == null ? "null" : "notnull");
-    const urlPrefix = this.baseUrl + 'api/books';
+    const urlPrefix = this.apiUrl + 'api/books';
     // const url = `${urlPrefix}/${id}`;
     this.http.post(urlPrefix, book, httpOptions).subscribe(result => {
       alert("Added book successfully!");
