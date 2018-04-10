@@ -1,0 +1,25 @@
+<div *ngIf="book">
+  <h2> {{book.title | uppercase}} Book Details </h2>
+  <div><span>id: </span> {{book.id}}</div>
+  <div class="form-group">
+    <label for="inputAuthor" class="col-sm-2 control-label">price:</label>
+    <input [(ngModel)]="book.id" placeholder="price">
+  </div>
+  <div class="form-group">
+    <label for="inputAuthor" class="col-sm-2 control-label">price:</label>
+    <input [(ngModel)]="book.price" placeholder="price">
+  </div>
+  <div class="form-group">
+    <label for="inputAuthor" class="col-sm-2 control-label">price:</label>
+    <input [(ngModel)]="book.price" placeholder="price">
+  </div>
+  <div class="form-group">
+    <label for="inputAuthor" class="col-sm-2 control-label">price:</label>
+    <input [(ngModel)]="book.price" placeholder="price">
+  </div>
+  <div class="form-group">
+    <label for="inputAuthor" class="col-sm-2 control-label">price:</label>
+    <input [(ngModel)]="book.price" placeholder="price">
+  </div>
+  <button (click)="save()">save</button>
+</div> 

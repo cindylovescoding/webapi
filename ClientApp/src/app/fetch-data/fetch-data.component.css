@@ -1,0 +1,48 @@
+/*label {
+  display: inline-block;
+  width: 3em;
+  margin: .5em 0;
+  color: #607D8B;
+  font-weight: bold;
+}*/
+
+/*input {
+  height: 2em;
+  font-size: 1em;
+  padding-left: .4em;
+}*/
+
+button {
+  margin-top: 20px;
+  font-family: Arial;
+  background-color: #eee;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: hand;
+}
+
+  button:hover {
+    background-color: #cfd8dc;
+  }
+
+  button:disabled {
+    background-color: #eee;
+    color: #ccc;
+    cursor: auto;
+  }
+.selected {
+  background-color: #CFD8DC !important;
+  color: white;
+}
+.books td.selected:hover {
+  background-color: #BBD8DC !important;
+  color: white;
+}
+
+.books td:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
