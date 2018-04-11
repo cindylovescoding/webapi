@@ -109,7 +109,7 @@ namespace webapiapp.Controllers
                 }
             }
 
-            return CreatedAtAction("GetAuthor", new { id = author.Id }, author);
+            return Ok(author);
         }
 
         // DELETE: api/Authors/5

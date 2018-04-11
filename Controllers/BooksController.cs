@@ -32,7 +32,7 @@ namespace webapiapp.Controllers
             //var bookServiceContext =  _context.Books.Include(b => b.Author);
             //return bookServiceContext;
 
-            var books = from b in _context.Books
+            var books = from b in _context.Books.OrderBy(b => b.Id)
                         select new BookDetailDTO()
                         {
                             Id = b.Id,
